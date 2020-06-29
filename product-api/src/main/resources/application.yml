@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: product-api
+
+security:
+  oauth2:
+    auth-uri: http://localhost:9999
+    client:
+      clientId: productApi
+      clientSecret: productApiSecret
+      scope: openid
+      grant-type: client_credentials
+      access-token-uri: ${security.oauth2.auth-uri}/oauth/token
+    resource: # ResourceServerTokenServicesConfiguration
+      # token-info-uri: ${security.oauth2.auth-uri}/oauth/check_token  # RemoteTokenServicesConfiguration.RemoteTokenServices
+#      jwk:
+#        key-set-uri: ${security.oauth2.auth-uri}/jwk.json # JwkTokenStoreConfiguration.DefaultTokenServices
+      jwt:
+        key-value: |  # JwtTokenServicesConfiguration.DefaultTokenServices
+          -----BEGIN PUBLIC KEY-----
+          XXXXX
+          -----END PUBLIC KEY-----
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

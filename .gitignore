@@ -1,0 +1,42 @@
+/target/
+*/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+.DS_Store
+*/.DS_Store
+
+### IntelliJ IDEA ###
+.idea
+*/*.idea
+*.iws
+*/*.iws
+*.iml
+*/*.iml
+*.ipr
+*/*.ipr
+
+*/src/main/resources/jks/*
+
+
+
+*/node_modules
+*/dist
+
+*/tests/e2e/videos/
+*/tests/e2e/screenshots/
+*/.scannerwork/
+*/coverage/
+
+# Log files
+*/npm-debug.log*
+*/yarn-debug.log*
+*/yarn-error.log*
+
+# Editor directories and files
+*/.idea
+*/.vscode
+*/*.suo
+*/*.ntvs*
+*/*.njsproj
+*/*.sln
+*/*.sw?

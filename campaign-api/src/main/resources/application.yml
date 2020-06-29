@@ -1,0 +1,42 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: campaign-api
+
+security:
+  oauth2:
+    auth-uri: http://localhost:9999
+    client:
+      clientId: campaignApi
+      clientSecret: campaignApiSecret
+      scope: openid
+      grant-type: client_credentials
+      access-token-uri: ${security.oauth2.auth-uri}/oauth/token
+    resource: # ResourceServerTokenServicesConfiguration
+      # token-info-uri: ${security.oauth2.auth-uri}/oauth/check_token  # RemoteTokenServicesConfiguration.RemoteTokenServices
+      #      jwk:
+      #        key-set-uri: ${security.oauth2.auth-uri}/jwk.json # JwkTokenStoreConfiguration.DefaultTokenServices
+      jwt:
+        key-value: |  # JwtTokenServicesConfiguration.DefaultTokenServices
+          -----BEGIN PUBLIC KEY-----
+          XXX
+          -----END PUBLIC KEY-----
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+
+feign:
+  client:
+    config:
+      product-api:
+        name: product-api
+        url: http://localhost:9000
+        connectTimeout: 1000
+        readTimeout: 2500
